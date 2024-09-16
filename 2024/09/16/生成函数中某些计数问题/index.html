@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>生成函数中某些计数问题 | Stargazer&#39; blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背包计数$1:有∑_{1≤i≤n}ai 种物品，体积为 i 的物品有 a_i 种。每种物品有无限个，求每种体积的方案数$ $$\prod_{i&#x3D;1}^n(\sum_{j&#x3D;0}^{\infty}x^{ij})^{a_i}&#x3D;\exp(\sum_{i&#x3D;1}^na_i\ln(\frac{1}{1-x^i}))$$至于$\ln(\frac{1}{1-x^i})$可以变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成函数中某些计数问题">
+<meta property="og:url" content="http://example.com/2024/09/16/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%AD%E6%9F%90%E4%BA%9B%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Stargazer&#39; blog">
+<meta property="og:description" content="背包计数$1:有∑_{1≤i≤n}ai 种物品，体积为 i 的物品有 a_i 种。每种物品有无限个，求每种体积的方案数$ $$\prod_{i&#x3D;1}^n(\sum_{j&#x3D;0}^{\infty}x^{ij})^{a_i}&#x3D;\exp(\sum_{i&#x3D;1}^na_i\ln(\frac{1}{1-x^i}))$$至于$\ln(\frac{1}{1-x^i})$可以变">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-16T13:37:49.000Z">
+<meta property="article:modified_time" content="2024-09-16T13:37:58.850Z">
+<meta property="article:author" content="Yike Chen">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Stargazer' blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stargazer&#39; blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-生成函数中某些计数问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/09/16/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%AD%E6%9F%90%E4%BA%9B%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2024-09-16T13:37:49.000Z" itemprop="datePublished">2024-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      生成函数中某些计数问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="背包计数"><a href="#背包计数" class="headerlink" title="背包计数"></a>背包计数</h3><p>$1:有<br>∑<br>_{1≤i≤n}<br>ai 种物品，体积为 i 的物品有 a_i 种。每种物品有无限个，求每种体积的方案数$</p>
+<p>$$\prod_{i&#x3D;1}^n(\sum_{j&#x3D;0}^{\infty}x^{ij})^{a_i}&#x3D;\exp(\sum_{i&#x3D;1}^na_i\ln(\frac{1}{1-x^i}))$$<br>至于$\ln(\frac{1}{1-x^i})$可以变成$-\ln(1-x^i)$然后泰勒展开<br>或者用$f&#x3D;\ln(g)\rightarrow g&#x3D;\int\frac{f’}{f}&#x3D;\int\frac{\sum_{j&#x3D;1}^{\infty}ijx^{ij-1}}{\frac{1}{1-x^i}}$搞</p>
+<p>得到<br>$$\exp(\sum_{i&#x3D;1}^{n}a_i\sum_{j&#x3D;1}^{\infty}\frac{x^{ij}}{j}))$$<br>调和级数处理再$\exp$<br>复杂度$O(nlogn)$</p>
+<p>$2:有∑_{1≤i≤n}ai 种物品，体积为 i 的物品有 a_i 种。每种物品只有1个，求每种体积的方案数$</p>
+<p>类似的生成函数为<br>$$\prod_{i&#x3D;1}^n(1+x^i)^{a_i}$$<br>后面的没区别</p>
+<p>$3:$<br>$有 n 种物品，第 i 种物品的体积为 i。第 i 中物品有 ai 个$</p>
+<p>类似生成函数为<br>$$\prod_{i&#x3D;1}^n(\frac{1-x^{(a_i+1)i}}{1-x^i})$$<br>$$&#x3D;\exp(\sum_{i&#x3D;1}^n\ln(1-x^{(a_i+1)i})-\sum_{i&#x3D;1}^n\ln(1-x^i))$$<br>两部分也没区别</p>
+<h3 id="树的计数"><a href="#树的计数" class="headerlink" title="树的计数"></a>树的计数</h3><p>$1:\有标号无根树$</p>
+<p>$ans&#x3D;n^{n-2}$</p>
+<p>$2:\有标号无根树$</p>
+<p>$ans&#x3D;n^{n-1}$</p>
+<p>$3:\无标号有根树$</p>
+<p>设$f_i表示i个点的方案数，F(x)&#x3D;\sum_if_ix^i$<br>考虑由于无标号有根<br>那么对于子树每种大小相同形态无法区分<br>所以考虑所有大小为$k$的数构成的森林为<br>$(\sum_{i}x^{ik})^{f_k}$<br>于是<br>$$F(x)&#x3D;x\prod_{i&#x3D;1}^{\infty}(\frac{1}{1-x^k})^{f_k}$$<br>同时取对后求导<br>$$\ln(F(x))&#x3D;\ln x+\sum_{i&#x3D;1}^{\infty}f_k\ln(\frac{1}{1-x^k})$$<br>$$\frac{F’}{F}&#x3D;\frac 1 x+\sum_{k&#x3D;1}^{\infty}f_kk\sum_{i&#x3D;1}^{\infty}x^{ik-1}$$<br>$$xF’&#x3D;F+F\sum_{k&#x3D;1}^{\infty}f_kk\sum_{i&#x3D;1}^{\infty}x^{ik}$$<br>考虑对于$[x^n]$<br>$$f_nn&#x3D;f_n+\sum_{j&#x3D;1}^{n-1}f_i\sum_{k|n-j}kf_k$$<br>$$(n-1)f_n&#x3D;\sum_{i&#x3D;1}^{n-1}f_i\sum_{j|n-i}jf_j$$<br>分治$NTT$并枚举倍数更新$if_i$<br>复杂度$O(nlog^2n)$</p>
+<p>另外有一种$O(nlogn)$的推法</p>
+<p>记<br>$$\xi(f(x))&#x3D;\prod_{i}(\frac{1}{1-x^i})^{f_i}\&#x3D;\exp(\sum_{i&#x3D;1}^{\infty}f_i\sum_{j&#x3D;1}^{\infty}\frac{x^{ij}}{j})\<br>&#x3D;\exp(\sum_{j&#x3D;1}^{\infty}\frac{f(x^j)}j)$$<br>即上面最开始那玩意<br>那么就是$f(x)&#x3D;x\xi(f(x))$<br>考虑用牛顿迭代求<br>已知$h(f_0)&#x3D;f_0-x\xi(f_0)&#x3D;0\mod x^{n}$<br>求$h(f)&#x3D;0\mod x^{2n}$<br>那么就是$f&#x3D;f_0-\frac{h(f_0)}{f’(f_0)}$<br>考虑对于$\xi(f_0),记g&#x3D;\sum_{j&#x3D;2}^{\infty}\frac{f(x^j)}{j}$<br>由于是$\mod x^n\rightarrow\mod x^{2n}，所以g(x)可以看做是已知的常量$<br>那么$\xi(f_0)&#x3D;\exp(f_0+g),\xi’(f_0)&#x3D;\exp(f_0+g)$</p>
+<p>那么就是$f&#x3D;f_0-\frac{f_0-x\xi(f_0)}{1-x\xi(f_0)}$<br>复杂度就是$O(nlogn)$的</p>
+<p>$3:\无标号无根树$</p>
+<p>考虑设$g_n$为答案<br>考虑容斥，对于一棵树看做用重心为根<br>减去所有其他的<br>$g_n&#x3D;f_n-\sum_{i&#x3D;1}^{\frac n2 }f_if_{n-i}$<br>但对于$n$为偶数的情况树可能有两个重心<br>这时候贡献是${f_{\frac n2 }\choose 2}$而不是$f_{\frac n 2}^2$<br>这个直接一次卷积即可</p>
+<p>前面求$f$可以分治$NTT$做到$O(nlog^2n)$<br>如果是用牛顿迭代就是$O(nlogn)$的</p>
+<p>例题：<a target="_blank" rel="noopener" href="https://vjudge.net/problem/SPOJ-PT07D">$\mathrm {SPOJ - PT07D}$</a>     $O(n^2)$<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5900">洛谷-无标号无根树计数</a> $O(nlog^2n&amp;nlogn)$</p>
+<h3 id="有标号-mathrm-DAG-计数"><a href="#有标号-mathrm-DAG-计数" class="headerlink" title="有标号$\mathrm{DAG}$计数"></a>有标号$\mathrm{DAG}$计数</h3><p>$1:\求n个点有标号的有向无环图(可以不连通)$</p>
+<p>设$f_i$为$i$个点的个数<br>枚举出度为$0$的点的个数<br>此时度数为$0$和其他点可以任意连边<br>但由于剩下的点也有出度为$0$的情况<br>容斥即可<br>那么<br>$$f_i&#x3D;\sum_{j&#x3D;1}^{i}(-1)^{j-1}{i\choose j}2^{j*(i-j)}f_{i-j}$$<br>复杂度$O(n^2)$<br>考虑用$NTT$优化上述$DP$</p>
+<p>由于$2^{j(i-j)}$不好弄<br>有$j(i-j)&#x3D;\frac{i^2}{2}-\frac{j^2}2-\frac{(i-j)^2}{2}$<br>那么<br>$$2^{j(i-j)}&#x3D;\frac{\sqrt2^{i^2}}{\sqrt2^{j^2}\sqrt2^{(i-j)^2}}$$</p>
+<p>变形后原$DP$式变为</p>
+<p>$$\frac{f_i}{\sqrt2^{i^2}i!}&#x3D;\sum_{j&#x3D;1}^i\frac{(-1)^{j-1}}{j!\sqrt 2^{j^2}}\frac{f_{i-j}}{\sqrt2^{(i-j)^2}(i-j)!}$$<br>写成生成函数就是<br>$f&#x3D;f*g+1$，则$f&#x3D;\frac{1}{1-g}$<br>注意递推式$j$是从$1$开始所以$g$没有0次项<br>多项式求逆即可</p>
+<p>模$998244353$下2的二次剩余有$11619517,882049182;$两个</p>
+<p>$2：\求n个点有标号的有向无环图(图必须是弱连通图)$</p>
+<p>考虑图必须弱联通<br>可以先求出$f$，然后容斥出$g$表示弱联通的答案<br>考虑枚举不连通时一号点所在连通块的大小减去<br>则$g_i&#x3D;f_i-\sum_{j&#x3D;1}^{i-1}{i-1\choose j-1}f_{i-j}g_j$<br>复杂度$O(n^2)$</p>
+<p>考虑移项后有</p>
+<p>$$\frac{g_i}{(i-1)!}+\sum_{j&#x3D;1}^{i-1}\frac{f_{i-j}}{(i-j)!}\frac{g_j}{(j-1)!}&#x3D;\frac{f_i}{(i-1)!}$$</p>
+<p>设$F(x)&#x3D;\sum_{i&#x3D;1}^{\infty}\frac{f_i}{i!}x^i,G(x)&#x3D;\sum_{i&#x3D;1}^{\infty}\frac{f_i}{(i-1)!}x^i,P(x)&#x3D;\sum_{i&#x3D;1}^{\infty}\frac{g_i}{(i-1)!}x^i$<br>那么就是$P+FP&#x3D;G$<br>则$P&#x3D;\frac{G}{1+F}$<br>多项式求逆即可<br>复杂度$O(nlogn)$</p>
+<h3 id="仙人掌计数"><a href="#仙人掌计数" class="headerlink" title="仙人掌计数"></a>仙人掌计数</h3><p>这个是有标号的</p>
+<p>考虑先算有根的情况<br>考虑一个点可能在某些环里，也有可能与子仙人掌相连<br>把环上这个点删去后会有很多子仙人掌<br>于是考虑$\exp$<br>对于环正反顺序是相同的<br>所以得到$f(x)&#x3D;x\exp(f(x)+\sum_{i\geq2}\frac{f^i(x)}{2})$<br>考虑牛顿迭代<br>$$h(x)&#x3D;f-x\exp(f+\frac{2f-f^2}{2-2f})$$<br>已知$h(f_0)\equiv0\mod x^n$<br>求$h(f)\equiv0\mod x^{2n}$<br>那么<br>$$f&#x3D;f_0-\frac{h(f_0)}{h’(f_0)}$$</p>
+<blockquote>
+<p>对于$h(f(x))&#x3D;xf(x)$这样的函数对$f$求导时将$x$看做常量</p>
+</blockquote>
+<p>$h’(f_0)&#x3D;1-(\frac{2f_0-f_0^2}{2-2f_0})’x\exp(\frac{2f_0-f_0^2}{2-2f_0})\<br>&#x3D;1-\frac{f_0^2-2f_0+2}{2(f_0-1)^2}x\exp(\frac{2f_0-f_0^2}{2-2f_0})$<br>于是<br>$$f&#x3D;f_0-\frac{2f_0-2x\exp(\frac{2f_0-f_0^2}{2-2f_0})}{2-(1+\frac{1}{(f_0-1)^2})x\exp(\frac{2f_0-f_0^2}{2-2f_0})}$$</p>
+<p>复杂度$O(nlogn)$</p>
+<p><a target="_blank" rel="noopener" href="https://loj.ac/problem/6569">LOJ-仙人掌计数</a></p>
+<hr>
+<h3 id="无向连通图计数"><a href="#无向连通图计数" class="headerlink" title="无向连通图计数"></a>无向连通图计数</h3><p>考虑任意图是由无向连通图$\exp$得到<br>而任意图的个数为$2^{n*(n-1)&#x2F;2}$个<br>直接求$\ln$即可</p>
+<h3 id="点双连通图计数"><a href="#点双连通图计数" class="headerlink" title="点双连通图计数"></a>点双连通图计数</h3><p>有标号<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5827">传送门</a></p>
+<p>先求出$i$个点有根图个数<br>设其$EGF$为$F(x)$<br>设$b_i$表示$i+1$个点的点双个数，设$EGF$为$B(x)$<br>考虑对于一个无向有根连通图<br>根可能在多个点双内<br>删去根后会形成多个连通块<br>考虑将根以及所在的所有点双的边删去<br>则每个连通块都会变成若干个连通图<br>那么一个连通块的生成函数<br>枚举连通图个数就是$\sum_{k}\frac{b_k}{k!}H(x)^k$<br>设$B(x)&#x3D;\sum_i\frac{b_i}{i!}x^i$<br>就有<br>$$F(x)&#x3D;xe^{(B(F(x)))}$$<br>那么<br>$$\frac{F(x)}{e^{B(F(x))}}&#x3D;x$$<br>设$F^{-1}(x)$为$F$的复合逆<br>那么有<br>$$F^{-1}(x)&#x3D;\frac{x}{e^{B(x)}}$$<br>$$B(x)&#x3D;\ln(\frac{x}{F^{-1}(x)})$$<br>设$G(x)&#x3D;\ln(\frac{F(x)}{x})$<br>则<br>$$G(F^{-1}(x))&#x3D;B(x)$$<br>由拓展拉格朗日反演得<br>$$[x^n]B(x)&#x3D;[x^n]G(F^{-1}(x))&#x3D;\frac{1}{n}[x^{n-1}]G’(x)(\frac{x}{F(x)})&#x3D;\frac{1}{n}[x^{n-1}]G’(x)(\frac{F(x)}{x})^{-n}$$<br>多项式$\exp$求快速幂即可<br>复杂度$O(nlogn)$</p>
+<hr>
+<h3 id="边双连通图计数"><a href="#边双连通图计数" class="headerlink" title="边双连通图计数"></a>边双连通图计数</h3><p>有标号<br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5828">传送门</a></p>
+<p>仍然设$f(x)$表示有根图的$EGF$<br>设$b_i$表示$i$个点边双个数<br>考虑对于一个图<br>枚举根所在边双大小<br>删去后会剩下很多个无向联通子图<br>每个子图的根可以任意连向边双上任意一个点<br>那么就可以得到<br>$f(x)&#x3D;\sum_{i\geq 1}\frac{b_ix^i}{i!}\exp(if(x))$<br>$&#x3D;\sum_{i\geq 1}\frac{b_ix^i}{i!}\exp(f)^i&#x3D;B(x\exp(f))$</p>
+<p>设$g&#x3D;x\exp(f)$<br>那么$f&#x3D;B(g)$<br>取复合逆<br>$f(g^{-1})&#x3D;B(x)$<br>$[x^n]B(x)&#x3D;[x^n]f(g^{-1})&#x3D;\frac 1 n[x^{n-1}]f’(\frac{x}{g(x)})^n&#x3D;\frac 1n[x^{n-1}]f’\exp(-n*f)$<br>复杂度$O(nlogn)$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/09/16/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%AD%E6%9F%90%E4%BA%9B%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/" data-id="cm151xvjw0003mkvt6ysd8o1j" data-title="生成函数中某些计数问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/09/16/icpc2021%E4%B8%8A%E6%B5%B7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          icpc2021上海
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/09/16/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">多项式算法合集</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/16/%E4%B8%80%E4%BA%9B%E9%9A%8F%E7%AC%94/">一些随笔</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/16/icpc2021%E4%B8%8A%E6%B5%B7/">icpc2021上海</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/16/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%AD%E6%9F%90%E4%BA%9B%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">生成函数中某些计数问题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/16/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/">多项式算法合集</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/08/my-notes/">my notes</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Yike Chen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
