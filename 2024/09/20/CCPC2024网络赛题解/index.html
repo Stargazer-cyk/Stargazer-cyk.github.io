@@ -28,7 +28,7 @@
 <meta property="og:description" content="CCPC网络赛，当时没组好队没打，后来vp了一下，感觉还行,单人9题，感觉组队应该10-11没啥问题了。 cf评测卡了，打了两个小时OI赛制。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-19T16:38:52.000Z">
-<meta property="article:modified_time" content="2024-09-20T12:29:55.288Z">
+<meta property="article:modified_time" content="2024-09-20T12:33:19.117Z">
 <meta property="article:author" content="stargazer">
 <meta property="article:tag" content="XCPC">
 <meta property="article:tag" content="Solution">
@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-09-20 00:38:52 / Modified: 20:29:55" itemprop="dateCreated datePublished" datetime="2024-09-20T00:38:52+08:00">2024-09-20</time>
+              <time title="Created: 2024-09-20 00:38:52 / Modified: 20:33:19" itemprop="dateCreated datePublished" datetime="2024-09-20T00:38:52+08:00">2024-09-20</time>
             </span>
 
           
@@ -205,15 +205,15 @@
 <p>多种可以降序或者升序，乘 $1$，但只有一种数字的时候不需要乘。</p>
 <h5 id="K"><a href="#K" class="headerlink" title="K:"></a>K:</h5><p>显然奇数直接取1,必胜，偶数一定不取奇数，所以可以看成 $n/2$ 的情况，递归直到一次取超过到 $k$ 个前都还是偶数则必败。</p>
 <h5 id="D"><a href="#D" class="headerlink" title="D:"></a>D:</h5><p>观察一下显然 $f[n][l][r]$ 表示 $S_n’$ 里匹配 $T_{l,r}$ 的方案数，枚举$S_n$是否匹配两种情况分别计算，复杂度 $n^4$。</p>
-<h5 id="J"><a href="#J" class="headerlink" title="J:"></a>J:</h5><p>观察交换过程，其实是 $f(a),f(b)$ 同时 xor $a_i^b_i$，所以对 $n$ 个 $a_i\^b_i$ 做线性基，从高到低枚举，如果 $f_a,f_b$ 这一位相同，那么就直接处理，否则第一个不同的位直接枚举谁大，那么后面不同的位都另一个取 $1$。</p>
+<h5 id="J"><a href="#J" class="headerlink" title="J:"></a>J:</h5><p>观察交换过程，其实是 $f(a),f(b)$ 同时 $\oplus (a_i\oplus b_i)$，所以对 $n$ 个 $a_i\oplus b_i$ 做线性基，从高到低枚举，如果 $f_a,f_b$ 这一位相同，那么就直接处理，否则第一个不同的位直接枚举谁大，那么后面不同的位都另一个取 $1$。</p>
 <h5 id="E"><a href="#E" class="headerlink" title="E:"></a>E:</h5><p>对于最大值，显然就是 $26$ 叉满，暴力枚举即可。对于期望，枚举 trie 树第 $i$ 层的一个节点的贡献，有 $26^{in}-(26^i-1)^n$ 种情况有贡献，因为每层方案不同，所以各层分别计算期望累加即可。</p>
 <h5 id="I"><a href="#I" class="headerlink" title="I:"></a>I:</h5><p>一个显然的 $dp$ 是枚举最终答案，然后算方案数，发现值域也很小，所以不需要枚举人和行李对，直接计算时间 $\geq i$ 的方案即可，这就是 $f[i][j]$ 前 $i$ 个人拿了 $j$ 个行李的方案数，双指针即可。</p>
 <h5 id="G"><a href="#G" class="headerlink" title="G:"></a>G:</h5><p>可以观察到第一个人的费用可以贪心，就是能付的饭菜总和和 $a_1$ 取 min，于是其他人是 $\min(a_i,Lim-1)-v_i$，注意处理这时候 $&lt;0$ 不合法，简单网络流建图即可。</p>
-<h5 id="F"><a href="#F" class="headerlink" title="F:"></a>F:</h5><p>$egg$ 和 $eeg$ 显然没啥区别，交换eg概率，当成 $eeg$ 来做。一眼考虑每个长度的区间的贡献，由于 $m$ 很小，所以显然 $ee…g$ 这样,先两个e，最后g结尾的串串长不会超过 $1560$，$e$ 不会超过$\sqrt{m}$,所以可以 $(m^2\sqrtm)$ dp一下每个长度的概率，然后再算不是 g 结尾的，只需要一直加 e，就可以求出 $ee…$ 这样的串凑出 $m$ 个 eeg 的概率。</p>
+<h5 id="F"><a href="#F" class="headerlink" title="F:"></a>F:</h5><p>$egg$ 和 $eeg$ 显然没啥区别，交换eg概率，当成 $eeg$ 来做。一眼考虑每个长度的区间的贡献，由于 $m$ 很小，所以显然 $ee…g$ 这样,先两个e，最后g结尾的串串长不会超过 $1560$，$e$ 不会超过$\sqrt{m}$,所以可以 $(m^2\sqrt m)$ dp一下每个长度的概率，然后再算不是 g 结尾的，只需要一直加 e，就可以求出 $ee…$ 这样的串凑出 $m$ 个 eeg 的概率。</p>
 <p>然后考虑枚举区间长度和带 $eg$ 的这个串长度，枚举第二个 $e$ 的位置，那么第二个 e 前面选一个位置作为第一个 $e$,然后前面除了e都可以，第二个e后面除了eg都可以。  </p>
 <p>写出来就是 </p>
-<p>$ans=\sum_{L=1}^n(n-L+1)\sum_{i=1}^{L}\sum_{j=1}^if_jP_{24}^{i-j}C_{i-1}^{j-1}(L-i)(1-p_e)^{L-i-1} \\<br>= \sum_{L=1}^n(n-L+1)\sum_{i=1}^{L}(L-i)(i-1)!(1-pe)^{L-i-1}p_{24}^i\sum_{j=1}^if_jP_{24}^{-j}(j-1)!\frac{1}{(i-j)!}$</p>
-<p>$p_{24}=1-p_5-p_7,f_j$ 是长度为 $j+1$ 的 $ee…$ 串恰好 $m$ 个的概率。</p>
+<script type="math/tex; mode=display">ans=\sum_{L=1}^n(n-L+1)\sum_{i=1}^{L}\sum_{j=1}^if_jP_{24}^{i-j}C_{i-1}^{j-1}(L-i)(1-p_e)^{L-i-1} \\
+= \sum_{L=1}^n(n-L+1)\sum_{i=1}^{L}(L-i)(i-1)!(1-pe)^{L-i-1}p_{24}^i\sum_{j=1}^if_jP_{24}^{-j}(j-1)!\frac{1}{(i-j)!}</script><p>$p_{24}=1-p_5-p_7,f_j$ 是长度为 $j+1$ 的 $ee…$ 串恰好 $m$ 个的概率。</p>
 <p>可以观察后面是两次卷积的形式，直接卷即可。</p>
 <p>特殊处理 $p_{24}=0$ 的情况。</p>
 <h5 id="C"><a href="#C" class="headerlink" title="C:"></a>C:</h5><p>没时间考虑了。</p>
