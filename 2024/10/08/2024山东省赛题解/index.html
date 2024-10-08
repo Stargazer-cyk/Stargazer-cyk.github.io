@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="最近和 Chao 导做的一个图上机器人运输问题。">
+  <meta name="description" content="题目链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Stacker Crane problem">
-<meta property="og:url" content="http://example.com/2024/09/16/Stacker-Crane-problem/index.html">
+<meta property="og:title" content="2024山东省赛题解">
+<meta property="og:url" content="http://example.com/2024/10/08/2024%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Stargazer&#39; blog">
-<meta property="og:description" content="最近和 Chao 导做的一个图上机器人运输问题。">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-16T14:49:23.000Z">
-<meta property="article:modified_time" content="2024-09-16T15:48:38.372Z">
+<meta property="article:published_time" content="2024-10-08T06:24:32.000Z">
+<meta property="article:modified_time" content="2024-10-08T06:42:58.944Z">
 <meta property="article:author" content="stargazer">
-<meta property="article:tag" content="research">
+<meta property="article:tag" content="XCPC">
+<meta property="article:tag" content="Solutions">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/09/16/Stacker-Crane-problem/">
+<link rel="canonical" href="http://example.com/2024/10/08/2024%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E9%A2%98%E8%A7%A3/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>Stacker Crane problem | Stargazer' blog</title>
+  <title>2024山东省赛题解 | Stargazer' blog</title>
   
 
 
@@ -157,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/16/Stacker-Crane-problem/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/08/2024%E5%B1%B1%E4%B8%9C%E7%9C%81%E8%B5%9B%E9%A2%98%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/my.png">
@@ -170,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Stacker Crane problem
+          2024山东省赛题解
         </h1>
 
         <div class="post-meta">
@@ -181,7 +182,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-09-16 22:49:23 / Modified: 23:48:38" itemprop="dateCreated datePublished" datetime="2024-09-16T22:49:23+08:00">2024-09-16</time>
+              <time title="Created: 2024-10-08 14:24:32 / Modified: 14:42:58" itemprop="dateCreated datePublished" datetime="2024-10-08T14:24:32+08:00">2024-10-08</time>
             </span>
 
           
@@ -195,8 +196,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近和 Chao 导做的一个图上机器人运输问题。</p>
+        <p><a target="_blank" rel="noopener" href="https://qoj.ac/contest/1801">题目链接</a></p>
 <span id="more"></span>
+<h5 id="I"><a href="#I" class="headerlink" title="I"></a>I</h5><p>暴力模拟即可</p>
+<h5 id="K"><a href="#K" class="headerlink" title="K"></a>K</h5><p>简单构造</p>
+<h5 id="A"><a href="#A" class="headerlink" title="A"></a>A</h5><p>二分答案，注意会爆longlong</p>
+<h5 id="F"><a href="#F" class="headerlink" title="F"></a>F</h5><p>拆开就是k个前缀和。</p>
+<h5 id="C"><a href="#C" class="headerlink" title="C"></a>C</h5><p>考虑一个显然的方法是按某个方式排序，然后逐个加入，查询有多少个相交的。</p>
+<p>发现按左端点sort，然后逐个插入用pq维护右端点之类的即可。</p>
+<h5 id="J"><a href="#J" class="headerlink" title="J"></a>J</h5><p>按照颜色边的权值排序</p>
+<p>每个颜色分颜色内联通，颜色内不连通，颜色间联通考虑即可</p>
+<h5 id="D"><a href="#D" class="headerlink" title="D"></a>D</h5><p>考虑有变化的交易，那么最多 $\sqrt t$ 次。</p>
+<h5 id="H"><a href="#H" class="headerlink" title="H"></a>H</h5><p>将所有的不合法线段拉出来，连边跑流输出方案即可。</p>
+<h5 id="M"><a href="#M" class="headerlink" title="M"></a>M</h5><p>考虑一个 $O(n^4)$ 的dp。</p>
+<p>$f[l][r]$ 表示匹配完 $l,r$ 之间的点，但这样拓展太慢了。</p>
+<p>考虑 $f[l][r][0/1/2]$ 表示匹配了 $l,r$，并且 $0$ 表示 $l,r$ 匹配， $1$ 表示 $l$ 没匹配右边，$2$ 表示 $r$ 没匹配左边，这样每次动一边就是 $O(n^3)$，然后发现只需要 $01$ 即可。</p>
+<h5 id="E"><a href="#E" class="headerlink" title="E"></a>E</h5><p>发现线段树只需要维护恰好1和0的时候，那么这时候维护有几个红球，为1和0的时候再更新q个区间的答案即可。</p>
+<h5 id="L"><a href="#L" class="headerlink" title="L"></a>L</h5><p>就是 $size&lt;k$ 的不需要考虑，那么可以先找一个重心，然后k逐渐减小，就是树逐渐加边，询问就是删加一条边，询问直径。</p>
+<p>用dfs序维护直径即可。</p>
+<h5 id="G"><a href="#G" class="headerlink" title="G"></a>G</h5><p>银牌爷太强了</p>
 
     </div>
 
@@ -206,7 +224,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/research/" rel="tag"># research</a>
+              <a href="/tags/XCPC/" rel="tag"># XCPC</a>
+              <a href="/tags/Solutions/" rel="tag"># Solutions</a>
           </div>
 
         
@@ -215,13 +234,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/09/16/%E4%B8%80%E4%BA%9B%E9%9A%8F%E7%AC%94/" rel="prev" title="一些随笔">
-      <i class="fa fa-chevron-left"></i> 一些随笔
+    <a href="/2024/10/02/2024%E5%B9%BF%E4%B8%9C%E5%B8%82%E8%B5%9B%E9%A2%98%E8%A7%A3/" rel="prev" title="2024广东市赛题解">
+      <i class="fa fa-chevron-left"></i> 2024广东市赛题解
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/09/17/%E4%B8%AD%E7%A7%8B/" rel="next" title="中秋">
-      中秋 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -280,6 +296,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#I"><span class="nav-number">1.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#K"><span class="nav-number">2.</span> <span class="nav-text">K</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#A"><span class="nav-number">3.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#F"><span class="nav-number">4.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C"><span class="nav-number">5.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#J"><span class="nav-number">6.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D"><span class="nav-number">7.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#H"><span class="nav-number">8.</span> <span class="nav-text">H</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#M"><span class="nav-number">9.</span> <span class="nav-text">M</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#E"><span class="nav-number">10.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#L"><span class="nav-number">11.</span> <span class="nav-text">L</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#G"><span class="nav-number">12.</span> <span class="nav-text">G</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
